@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://chhldlc7jo3fo"]
+
+[ext_resource type="PackedScene" uid="uid://2h4chjkmcvt1" path="res://Furniture/Scene/object_template.tscn" id="1_8o6av"]
+[ext_resource type="Texture2D" uid="uid://c6eh5t2gijt1m" path="res://Furniture/Texture/Banheira.png" id="2_xaji7"]
+[ext_resource type="Texture2D" uid="uid://s8fe70oylst" path="res://Furniture/Texture/Banheira Quebrada 1.png" id="3_nd76e"]
+[ext_resource type="Texture2D" uid="uid://dhioun17p1mnq" path="res://Furniture/Texture/Banheira Quebrada 2.png" id="4_qtm8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fweyj"]
+
+[sub_resource type="Animation" id="Animation_gja2q"]
+resource_name = "falling"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_xaji7"), ExtResource("3_nd76e"), ExtResource("4_qtm8j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plataform/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ghh0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xaji7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plataform/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uh65m"]
+resource_name = "revert"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_qtm8j"), ExtResource("3_nd76e"), ExtResource("2_xaji7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plataform/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6glc"]
+_data = {
+"RESET": SubResource("Animation_ghh0o"),
+"falling": SubResource("Animation_gja2q"),
+"revert": SubResource("Animation_uh65m")
+}
+
+[node name="Bathtub" node_paths=PackedStringArray("_animation") instance=ExtResource("1_8o6av")]
+_animation = NodePath("Animation")
+
+[node name="Texture" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xaji7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(23, -21)
+shape = SubResource("RectangleShape2D_fweyj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataform" index="0"]
+polygon = PackedVector2Array(-72, 0.999997, -63, -2.92063e-06, -56, 4, -49, 7, -41, 7, -31, 9, -23, 13, -13, 14, 2, 14, 19, 12, 31, 8, 38, -2.92063e-06, 54, -2.92063e-06, 49, 10, 34, 18, 12, 24, -11, 23, -31, 17, -53, 14, -69, 5)
+one_way_collision = true
+
+[node name="Animation" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_e6glc")
+}

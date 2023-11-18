@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp7txccr5j6b6"]
+
+[ext_resource type="Script" path="res://Player/Script/inventory_container.gd" id="1_xh2ox"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_baphu"]
+
+[sub_resource type="Animation" id="Animation_xoolt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ifh1t"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c28y5"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76i1y"]
+_data = {
+"RESET": SubResource("Animation_xoolt"),
+"hide": SubResource("Animation_ifh1t"),
+"show": SubResource("Animation_c28y5")
+}
+
+[node name="Inventory" type="TextureRect" node_paths=PackedStringArray("_animation", "_inventory") groups=["inventory"]]
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_baphu")
+script = ExtResource("1_xh2ox")
+_animation = NodePath("Animation")
+_inventory = NodePath("InventoryContainer/Inventory")
+
+[node name="InventoryContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="GridContainer" parent="InventoryContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 144
+theme_override_constants/v_separation = 144
+columns = 5
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_76i1y")
+}

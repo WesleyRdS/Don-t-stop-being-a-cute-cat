@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgbhhb670ewxb"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_g0ykk"]
+[ext_resource type="Texture2D" uid="uid://ctlyj5p5qc6h7" path="res://Items/Texture/Parafuso.png" id="2_6fqk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m02em"]
+size = Vector2(132, 112)
+
+[node name="Screw" instance=ExtResource("1_g0ykk")]
+collectable_data = [1, "res://Items/Texture/Parafuso.png", null, null, "collectable", "Screw"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_6fqk2")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_m02em")

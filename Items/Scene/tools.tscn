@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://djywv242ar2mn"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_n04pq"]
+[ext_resource type="Texture2D" uid="uid://dkf5ko45e1vi" path="res://Items/Texture/Ferramentas.png" id="2_nggsx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8imuk"]
+radius = 85.4751
+
+[node name="Tools" instance=ExtResource("1_n04pq")]
+collectable_data = [1, "res://Items/Texture/Ferramentas.png", null, null, "collectable", "Tools"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_nggsx")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_8imuk")

@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvrexitxbo7hj"]
+
+[ext_resource type="PackedScene" uid="uid://2h4chjkmcvt1" path="res://Furniture/Scene/object_template.tscn" id="1_bha2d"]
+[ext_resource type="Texture2D" uid="uid://dlj3l4a2p1sf5" path="res://Furniture/Texture/Casinha de gato.png" id="2_q6u7o"]
+[ext_resource type="Texture2D" uid="uid://bdupic6do6c3d" path="res://Furniture/Texture/Casinha de gato quebrando 1.png" id="3_0nu0s"]
+[ext_resource type="Texture2D" uid="uid://bvawer0wkpewh" path="res://Furniture/Texture/Casinha de gato quebrando 2.png" id="4_pt688"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v54q8"]
+radius = 8.06226
+
+[sub_resource type="Animation" id="Animation_yw6wx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_q6u7o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g4hgy"]
+resource_name = "falling"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_q6u7o"), ExtResource("3_0nu0s"), ExtResource("4_pt688")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_a63cr"]
+resource_name = "revert"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_pt688"), ExtResource("3_0nu0s"), ExtResource("2_q6u7o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mso8x"]
+_data = {
+"RESET": SubResource("Animation_yw6wx"),
+"falling": SubResource("Animation_g4hgy"),
+"revert": SubResource("Animation_a63cr")
+}
+
+[node name="CatHouse" node_paths=PackedStringArray("_animation") instance=ExtResource("1_bha2d")]
+_animation = NodePath("Animation")
+
+[node name="Texture" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_q6u7o")
+
+[node name="Collision" type="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(45, 16)
+shape = SubResource("CircleShape2D_v54q8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataform" index="0"]
+polygon = PackedVector2Array(-66, 51, -55, 53, 33, 67, 45, 68, 63, 55, 64, 52, 34, 47, 32, -16, 43.2896, -12.8189, 62, -29, -6, -29, -13, -26, -12, -14, -23, -15, -22, -48, -8, -46, 9, -56, 10, -61, -65, -58, -65, -53, -36, -49, -36, -16, -48, -18, -67, -7)
+one_way_collision = true
+
+[node name="Animation" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_mso8x")
+}

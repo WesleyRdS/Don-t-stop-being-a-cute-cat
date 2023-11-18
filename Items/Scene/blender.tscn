@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c21rtio1yc3ka"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_rhkky"]
+[ext_resource type="Texture2D" uid="uid://dht7k8kxr7ycm" path="res://Items/Texture/Liquidificador.png" id="2_2hw88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js105"]
+size = Vector2(69, 136)
+
+[node name="Blender" instance=ExtResource("1_rhkky")]
+collectable_data = [1, "res://Items/Texture/Liquidificador.png", null, null, "collectable", "Blender"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_2hw88")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_js105")

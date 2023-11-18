@@ -1,0 +1,289 @@
+[gd_scene load_steps=21 format=3 uid="uid://vage41knl718"]
+
+[ext_resource type="PackedScene" uid="uid://c757omlo4cnd4" path="res://Enemies/Scenes/enemy_template.tscn" id="1_ivktw"]
+[ext_resource type="Texture2D" uid="uid://bduxfeypegfiy" path="res://Player/Texture/Area.png" id="2_iqu8l"]
+[ext_resource type="Texture2D" uid="uid://pfe7aywllfx4" path="res://Enemies/Texture/PaiIdle.png" id="2_pi6bo"]
+[ext_resource type="Texture2D" uid="uid://dora7b60i6x74" path="res://Enemies/Texture/PaiWalk1.png" id="3_6aw8x"]
+[ext_resource type="Texture2D" uid="uid://bl505tun20k0n" path="res://Enemies/Texture/PaiWalk2.png" id="4_y0ypn"]
+[ext_resource type="Texture2D" uid="uid://domlrpxfmyd2" path="res://Enemies/Texture/PaiBackIdle.png" id="5_uregs"]
+[ext_resource type="Texture2D" uid="uid://bti67kvi2ickg" path="res://Enemies/Texture/PaiBackWalk1.png" id="6_x86kq"]
+[ext_resource type="Texture2D" uid="uid://bffye1vka4s1a" path="res://Enemies/Texture/PaiBackWalk2.png" id="7_thcji"]
+[ext_resource type="Texture2D" uid="uid://csbljo8abwseg" path="res://Enemies/Texture/PaiIdleRage.png" id="8_xmr8k"]
+[ext_resource type="Texture2D" uid="uid://bw2hq601jtv0p" path="res://Enemies/Texture/PaiWalkRage1.png" id="9_rtejg"]
+[ext_resource type="Texture2D" uid="uid://hqun17ib1a7d" path="res://Enemies/Texture/PaiWalkRage2.png" id="10_qe8ii"]
+[ext_resource type="Texture2D" uid="uid://bqnwarwuih4me" path="res://Enemies/Texture/PaiConfuse.png" id="11_3521f"]
+[ext_resource type="Texture2D" uid="uid://b3dkrl1rq62mp" path="res://Enemies/Texture/PaiBackConfuse.png" id="12_i3cdl"]
+
+[sub_resource type="Animation" id="Animation_g5hur"]
+resource_name = "BackConfuse"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_i3cdl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonitoringArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.227451)]
+}
+
+[sub_resource type="Animation" id="Animation_f4dpy"]
+resource_name = "BackRunN"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_uregs"), ExtResource("6_x86kq"), ExtResource("5_uregs"), ExtResource("7_thcji")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonitoringArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dciu2"]
+resource_name = "FrontConfuse"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_3521f")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonitoringArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.227451)]
+}
+
+[sub_resource type="Animation" id="Animation_xtipb"]
+resource_name = "FrontRunN"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_pi6bo"), ExtResource("3_6aw8x"), ExtResource("2_pi6bo"), ExtResource("4_y0ypn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonitoringArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_brml1"]
+resource_name = "FrontRunR"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_xmr8k"), ExtResource("9_rtejg"), ExtResource("8_xmr8k"), ExtResource("10_qe8ii")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonitoringArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bq5n8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_pi6bo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonitoringArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5u3hj"]
+_data = {
+"BackConfuse": SubResource("Animation_g5hur"),
+"BackRunN": SubResource("Animation_f4dpy"),
+"FrontConfuse": SubResource("Animation_dciu2"),
+"FrontRunN": SubResource("Animation_xtipb"),
+"FrontRunR": SubResource("Animation_brml1"),
+"RESET": SubResource("Animation_bq5n8")
+}
+
+[node name="Father" node_paths=PackedStringArray("_animation") instance=ExtResource("1_ivktw")]
+_name = "Boy"
+_animation = NodePath("Animation")
+
+[node name="Area" type="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.141176, 0.321569, 0.313726)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("2_iqu8l")
+
+[node name="Texture" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_pi6bo")
+
+[node name="Animation" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_5u3hj")
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="." index="3"]
+polygon = PackedVector2Array(-26, -71, 20, -72, 24, -63, 27, -40, 40, -32, 27, 13, 27, 71, -28, 71, -27, 14, -42, -32, -32, -37, -27, -58)

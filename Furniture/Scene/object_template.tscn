@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://2h4chjkmcvt1"]
+
+[ext_resource type="Script" path="res://Furniture/Script/object_template.gd" id="1_intko"]
+
+[node name="ObjectTemplate" type="Node2D" node_paths=PackedStringArray("_timer")]
+script = ExtResource("1_intko")
+_timer = NodePath("Timer")
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(-1.54972e-06, 2.92063e-06)
+collision_layer = 32
+collision_mask = 64
+
+[node name="Plataform" type="StaticBody2D" parent="."]
+position = Vector2(-1.54972e-06, 2.92063e-06)
+collision_layer = 32
+collision_mask = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

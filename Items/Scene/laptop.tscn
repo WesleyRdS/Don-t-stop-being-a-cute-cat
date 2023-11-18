@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4cjf7dupebdc"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_56tgf"]
+[ext_resource type="Texture2D" uid="uid://goayy5nvtgo8" path="res://Items/Texture/Laptop.png" id="2_anu2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gf8h"]
+size = Vector2(110, 106)
+
+[node name="Laptop" instance=ExtResource("1_56tgf")]
+collectable_data = [1, "res://Items/Texture/Laptop.png", null, null, "collectable", "Laptop"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_anu2r")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("RectangleShape2D_7gf8h")

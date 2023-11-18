@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://dihh36fl1kj30"]
+
+[ext_resource type="PackedScene" uid="uid://2h4chjkmcvt1" path="res://Furniture/Scene/object_template.tscn" id="1_5xudl"]
+[ext_resource type="Texture2D" uid="uid://dyao8u4wd6t0m" path="res://Furniture/Texture/Maquina de lavar.png" id="2_ain5c"]
+[ext_resource type="Texture2D" uid="uid://c13pnxayxcufh" path="res://Furniture/Texture/Maquina de lavar quebrada.png" id="3_smtnf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imy7g"]
+radius = 27.1662
+
+[sub_resource type="Animation" id="Animation_2h46y"]
+resource_name = "falling"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_ain5c"), ExtResource("3_smtnf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_j2vb6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ain5c")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tjl38"]
+resource_name = "revert"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_smtnf"), ExtResource("2_ain5c")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g4qb4"]
+_data = {
+"RESET": SubResource("Animation_j2vb6"),
+"falling": SubResource("Animation_2h46y"),
+"revert": SubResource("Animation_tjl38")
+}
+
+[node name="WashingMachine" node_paths=PackedStringArray("_animation") instance=ExtResource("1_5xudl")]
+_animation = NodePath("Animation")
+
+[node name="Texture" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ain5c")
+
+[node name="Collision" type="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(-10, 3)
+shape = SubResource("CircleShape2D_imy7g")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Plataform" index="0"]
+polygon = PackedVector2Array(-47, -61, 34, -62, 42, -55, 35, 54, 28, 63, 32, -50, -47, -47)
+one_way_collision = true
+
+[node name="Animation" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_g4qb4")
+}

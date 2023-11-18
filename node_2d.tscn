@@ -1,0 +1,223 @@
+[gd_scene load_steps=25 format=3 uid="uid://bitcmfrvbt382"]
+
+[ext_resource type="PackedScene" uid="uid://b5t88oyhyakde" path="res://Player/Scene/player.tscn" id="1_dov1i"]
+[ext_resource type="Script" path="res://node_2d.gd" id="1_vh0g6"]
+[ext_resource type="PackedScene" uid="uid://t4up47fk6wa6" path="res://Enemies/Scenes/paths.tscn" id="2_8lss0"]
+[ext_resource type="PackedScene" uid="uid://c757omlo4cnd4" path="res://Enemies/Scenes/enemy_template.tscn" id="2_iiv3m"]
+[ext_resource type="Script" path="res://Items/Script/collectibles.gd" id="5_vjey3"]
+[ext_resource type="Texture2D" uid="uid://c53w10wnuwjr5" path="res://icon.svg" id="6_wnsrd"]
+[ext_resource type="PackedScene" uid="uid://cv6c2w7ooehl0" path="res://Management/Scene/secret_base.tscn" id="7_rdy11"]
+[ext_resource type="PackedScene" uid="uid://clcgnijseym46" path="res://Items/Scene/bucket.tscn" id="9_768tp"]
+[ext_resource type="PackedScene" uid="uid://bk3nmay0hxavr" path="res://Items/Scene/box.tscn" id="10_xnxix"]
+[ext_resource type="PackedScene" uid="uid://o7nq77wv024x" path="res://Items/Scene/glue.tscn" id="11_s0sgs"]
+[ext_resource type="PackedScene" uid="uid://b3vq4kq1rtk5" path="res://Items/Scene/remote.tscn" id="12_eforv"]
+[ext_resource type="PackedScene" uid="uid://b4cjf7dupebdc" path="res://Items/Scene/laptop.tscn" id="13_ybjft"]
+[ext_resource type="PackedScene" uid="uid://c21rtio1yc3ka" path="res://Items/Scene/blender.tscn" id="14_cun8g"]
+[ext_resource type="PackedScene" uid="uid://1buath0xk540" path="res://Items/Scene/board.tscn" id="15_ggm35"]
+[ext_resource type="PackedScene" uid="uid://dmlo1h2875bsa" path="res://Items/Scene/toilet.tscn" id="16_00nvr"]
+[ext_resource type="PackedScene" uid="uid://bgbhhb670ewxb" path="res://Items/Scene/screw.tscn" id="17_aflsm"]
+[ext_resource type="PackedScene" uid="uid://bm8deis2fqcj1" path="res://Items/Scene/spring.tscn" id="18_jvvkf"]
+[ext_resource type="PackedScene" uid="uid://csihuc5n37ffx" path="res://Items/Scene/tape.tscn" id="19_dnqy5"]
+[ext_resource type="PackedScene" uid="uid://djywv242ar2mn" path="res://Items/Scene/tools.tscn" id="20_m4aam"]
+[ext_resource type="PackedScene" uid="uid://btvybrdpomk0s" path="res://Furniture/Scene/stove.tscn" id="20_v6u8u"]
+[ext_resource type="PackedScene" uid="uid://bmngxokvexv5l" path="res://Furniture/Scene/sink.tscn" id="21_wsqms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bhvd"]
+size = Vector2(1187, 145)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7xest"]
+vertices = PackedVector2Array(-2075, -111, -2104, -339, -851, -294, -895, -107, 40, 401, -20, 582, 4661, 537, 4571, 401, 4782, 522, -5231, -37, -7239, -37, -7224, -278, -5125, -294, -1515, 2017, -1621, 2183, 5175, 2349, 4994, 2168, 5194, 60, 5054, 220, 4728, 68, 4872, 221)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(9, 12, 13, 14), PackedInt32Array(15, 14, 13, 16), PackedInt32Array(17, 15, 16, 18), PackedInt32Array(19, 17, 18, 20), PackedInt32Array(7, 19, 20, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2075, -111, -895, -107, -20, 582, 4661, 537, 4782, 522, 4872, 221, 5054, 220, 4994, 2168, -1515, 2017, -5125, -294, -7224, -278, -7239, -37, -5231, -37, -1621, 2183, 5175, 2349, 5194, 60, 4728, 68, 4571, 401, 40, 401, -851, -294, -2104, -339)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h23b5"]
+size = Vector2(122, 125)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vh0g6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 354)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(571, 256)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1481, -391)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1723, 253)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2927, 253)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4080, 253)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1629, -1916)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-425, -1916)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(728, -1916)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5398, -531)
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5398, 1251)
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1382, -1683)
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1382, 98.9998)
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2154, -1763)
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2154, 18.9996)
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4585, 2042)
+rotation = 1.596
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2803, 1999)
+rotation = 1.596
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1043, 1963)
+rotation = 1.596
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-725, 1920)
+rotation = 1.596
+scale = Vector2(-0.142281, 12.2171)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3393, 882)
+rotation = 2.12367
+scale = Vector2(-0.238712, -30.7302)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-6255, -265)
+rotation = 1.56166
+scale = Vector2(-0.230399, 14.6922)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-7416, -1150)
+rotation = 1.56166
+scale = Vector2(1.75692, 2.10367)
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-462, -53.9999)
+rotation = 0.641462
+shape = SubResource("RectangleShape2D_6bhvd")
+
+[node name="Paths" parent="." instance=ExtResource("2_8lss0")]
+
+[node name="EnemyTemplate" parent="Paths/Points/Follow" index="0" node_paths=PackedStringArray("path_follow") instance=ExtResource("2_iiv3m")]
+path_follow = NodePath("..")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7xest")
+
+[node name="Collectibles" type="Area2D" parent="."]
+position = Vector2(-1513, -209)
+collision_layer = 128
+script = ExtResource("5_vjey3")
+collectable_data = [1, "res://icon.svg", null, null, "collectable", "collectable"]
+
+[node name="Texture" type="Sprite2D" parent="Collectibles"]
+texture = ExtResource("6_wnsrd")
+
+[node name="Animation" type="AnimationPlayer" parent="Collectibles"]
+
+[node name="Notifier" type="VisibleOnScreenNotifier2D" parent="Collectibles"]
+
+[node name="Collision" type="CollisionShape2D" parent="Collectibles"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_h23b5")
+
+[node name="Player" parent="." instance=ExtResource("1_dov1i")]
+position = Vector2(-1586, -562)
+_move_speed = 100.0
+_jump_velocity = -300.0
+
+[node name="SecretBase" parent="." instance=ExtResource("7_rdy11")]
+position = Vector2(-1868, -262)
+_item_1 = "collectable"
+_item_2 = "collectable"
+_item_3 = "collectable"
+
+[node name="Bucket" parent="." instance=ExtResource("9_768tp")]
+position = Vector2(-1349, -198)
+
+[node name="Box" parent="Bucket" instance=ExtResource("10_xnxix")]
+
+[node name="Glue" parent="Bucket" instance=ExtResource("11_s0sgs")]
+
+[node name="Remote" parent="Bucket" instance=ExtResource("12_eforv")]
+
+[node name="Laptop" parent="Bucket" instance=ExtResource("13_ybjft")]
+
+[node name="Blender" parent="Bucket" instance=ExtResource("14_cun8g")]
+
+[node name="Board" parent="Bucket" instance=ExtResource("15_ggm35")]
+
+[node name="Toilet" parent="Bucket" instance=ExtResource("16_00nvr")]
+
+[node name="Screw" parent="Bucket" instance=ExtResource("17_aflsm")]
+
+[node name="Spring" parent="Bucket" instance=ExtResource("18_jvvkf")]
+
+[node name="Tape" parent="Bucket" instance=ExtResource("19_dnqy5")]
+
+[node name="Tools" parent="Bucket" instance=ExtResource("20_m4aam")]
+
+[node name="Stove" parent="." instance=ExtResource("20_v6u8u")]
+position = Vector2(-1147, -428)
+
+[node name="Sink" parent="." instance=ExtResource("21_wsqms")]
+position = Vector2(-1581, -356)
+
+[connection signal="body_entered" from="Collectibles" to="Collectibles" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Collectibles" to="Collectibles" method="_on_body_exited" flags=18]
+[connection signal="screen_entered" from="Collectibles/Notifier" to="Collectibles" method="_on_notifier_screen_entered" flags=18]
+
+[editable path="Paths"]

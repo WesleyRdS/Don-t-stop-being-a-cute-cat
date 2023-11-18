@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://o7nq77wv024x"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_x240u"]
+[ext_resource type="Texture2D" uid="uid://crqxpsitjcbpp" path="res://Items/Texture/Cola.png" id="2_kr48x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l78ol"]
+size = Vector2(79, 93)
+
+[node name="Glue" instance=ExtResource("1_x240u")]
+collectable_data = [1, "res://Items/Texture/Cola.png", null, null, "collectable", "Glue"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_kr48x")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_l78ol")

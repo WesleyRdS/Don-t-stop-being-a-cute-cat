@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgtbm34c51n0j"]
+
+[ext_resource type="Script" path="res://Player/Script/iventory_slot.gd" id="1_80ao8"]
+[ext_resource type="Texture2D" uid="uid://c53w10wnuwjr5" path="res://icon.svg" id="1_s0j5s"]
+[ext_resource type="FontFile" uid="uid://cryeefx34b5cl" path="res://Management/Fonts/Creepster-Regular.ttf" id="2_txo1p"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_883di"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_npgsa"]
+font = ExtResource("2_txo1p")
+font_size = 21
+font_color = Color(0.772549, 0.952941, 0.254902, 1)
+outline_size = 6
+shadow_size = 9
+shadow_color = Color(0.745098, 0.964706, 0.0823529, 1)
+
+[node name="IventorySlot" type="TextureRect" node_paths=PackedStringArray("_amount_text", "_item_texture")]
+self_modulate = Color(0.380392, 0.380392, 0.380392, 1)
+offset_right = 128.0
+offset_bottom = 128.0
+texture = SubResource("CanvasTexture_883di")
+script = ExtResource("1_80ao8")
+_amount_text = NodePath("Amount")
+_item_texture = NodePath("ItemTexture")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_s0j5s")
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 118.0
+offset_right = 158.0
+offset_bottom = 146.0
+text = "258"
+label_settings = SubResource("LabelSettings_npgsa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

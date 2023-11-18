@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmngxokvexv5l"]
+
+[ext_resource type="PackedScene" uid="uid://2h4chjkmcvt1" path="res://Furniture/Scene/object_template.tscn" id="1_bi45j"]
+[ext_resource type="Texture2D" uid="uid://bl6fwf1c05h1h" path="res://Furniture/Texture/Pia.png" id="2_bouva"]
+[ext_resource type="Texture2D" uid="uid://bfmaeuc5kogjo" path="res://Furniture/Texture/Pia quebrada.png" id="3_avbsy"]
+
+[sub_resource type="Animation" id="Animation_w0qb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bouva")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jq20c"]
+resource_name = "falling"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_bouva"), ExtResource("3_avbsy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_2yhx6"]
+resource_name = "revert"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_avbsy"), ExtResource("2_bouva")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qfd6"]
+_data = {
+"RESET": SubResource("Animation_w0qb0"),
+"falling": SubResource("Animation_jq20c"),
+"revert": SubResource("Animation_2yhx6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nm3v"]
+size = Vector2(28, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boarp"]
+size = Vector2(128, 77)
+
+[node name="Sink" node_paths=PackedStringArray("_animation") instance=ExtResource("1_bi45j")]
+_animation = NodePath("Animation")
+
+[node name="Animation" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_0qfd6")
+}
+
+[node name="Texture" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_bouva")
+
+[node name="Collision" type="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(-3, -35)
+shape = SubResource("RectangleShape2D_3nm3v")
+
+[node name="Collision" type="CollisionShape2D" parent="Plataform" index="0"]
+position = Vector2(1, 32.5)
+shape = SubResource("RectangleShape2D_boarp")
+one_way_collision = true

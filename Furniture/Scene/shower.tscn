@@ -1,0 +1,190 @@
+[gd_scene load_steps=9 format=3 uid="uid://c50k4hn7ake5w"]
+
+[ext_resource type="PackedScene" uid="uid://2h4chjkmcvt1" path="res://Furniture/Scene/object_template.tscn" id="1_3hhma"]
+[ext_resource type="Texture2D" uid="uid://bc71chomeuaqy" path="res://Furniture/Texture/Chuveiro.png" id="2_q0fus"]
+[ext_resource type="Texture2D" uid="uid://65gf3b7xv4kn" path="res://Furniture/Texture/Chuveiro quebrado.png" id="3_aqa1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm7eh"]
+size = Vector2(62, 67)
+
+[sub_resource type="Animation" id="Animation_o4ish"]
+resource_name = "falling"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_q0fus"), ExtResource("3_aqa1n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(39, 6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Plataform/Collision:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [PackedVector2Array(23, -11, -20, -28, -34, -26, -38, -16, -39, -2, -42, 5, -53, 11, -63, 19, -66, 25, -91, 34, -94, 46, -87, 53, -80, 54, 27, 51, 29, 39, 9, 27, -2, 25, -7, 13, -22, 6, -25, -2, -24, -16, 5, -4), PackedVector2Array(42, -12, 20, -12, -20, -28, -30, -28, -36, -18, -34, -6, -28, 1, -23, 10, -21, 17, -29, 24, -31, 33, -27, 42, -38, 54, -43, 66, -39, 76, -30, 82, 57, -3, 44, -6, 24, 1, 10, -3, -9, 0, -29, -20, -22, -20, -21, -16, 5, -4, 29, -5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_rhu7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_q0fus")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Plataform/Collision:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(23, -11, -20, -28, -34, -26, -38, -16, -39, -2, -42, 5, -53, 11, -63, 19, -66, 25, -91, 34, -94, 46, -87, 53, -80, 54, 27, 51, 29, 39, 9, 27, -2, 25, -7, 13, -22, 6, -25, -2, -24, -16, 5, -4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_117vx"]
+resource_name = "revert"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_aqa1n"), ExtResource("2_q0fus")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(39, 6), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Plataform/Collision:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [PackedVector2Array(42, -12, 20, -12, -20, -28, -30, -28, -36, -18, -34, -6, -28, 1, -23, 10, -21, 17, -29, 24, -31, 33, -27, 42, -38, 54, -43, 66, -39, 76, -30, 82, 57, -3, 44, -6, 24, 1, 10, -3, -9, 0, -29, -20, -22, -20, -21, -16, 5, -4, 29, -5), PackedVector2Array(23, -11, -20, -28, -34, -26, -38, -16, -39, -2, -42, 5, -53, 11, -63, 19, -66, 25, -91, 34, -94, 46, -87, 53, -80, 54, 27, 51, 29, 39, 9, 27, -2, 25, -7, 13, -22, 6, -25, -2, -24, -16, 5, -4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_snekv"]
+_data = {
+"RESET": SubResource("Animation_rhu7i"),
+"falling": SubResource("Animation_o4ish"),
+"revert": SubResource("Animation_117vx")
+}
+
+[node name="Shower" node_paths=PackedStringArray("_animation") instance=ExtResource("1_3hhma")]
+_animation = NodePath("Animation")
+
+[node name="Texture" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_q0fus")
+
+[node name="Collision" type="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(-8, -23.5)
+shape = SubResource("RectangleShape2D_vm7eh")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Plataform" index="0"]
+position = Vector2(23, -27)
+polygon = PackedVector2Array(23, -11, -20, -28, -34, -26, -38, -16, -39, -2, -42, 5, -53, 11, -63, 19, -66, 25, -91, 34, -94, 46, -87, 53, -80, 54, 27, 51, 29, 39, 9, 27, -2, 25, -7, 13, -22, 6, -25, -2, -24, -16, 5, -4)
+one_way_collision = true
+
+[node name="Animation" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_snekv")
+}

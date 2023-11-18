@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmlo1h2875bsa"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_vdfao"]
+[ext_resource type="Texture2D" uid="uid://b7jh5ko3pgjcx" path="res://Items/Texture/Privada.png" id="2_dtwcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxji1"]
+size = Vector2(87, 139)
+
+[node name="Toilet" instance=ExtResource("1_vdfao")]
+collectable_data = [1, "res://Items/Texture/Privada.png", null, null, "collectable", "Toilet"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_dtwcy")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_jxji1")

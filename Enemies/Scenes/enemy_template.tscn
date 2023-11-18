@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c757omlo4cnd4"]
+
+[ext_resource type="Script" path="res://Enemies/Script/enemy_template.gd" id="1_x25tm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u68ve"]
+radius = 139.129
+
+[node name="EnemyTemplate" type="CharacterBody2D" node_paths=PackedStringArray("_monitoring_area", "_wait_timer", "_navigation_agent")]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_x25tm")
+_monitoring_area = NodePath("MonitoringArea")
+_wait_timer = NodePath("WaitTimer")
+_navigation_agent = NodePath("NavigationAgent")
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="MonitoringArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="Collision" type="CollisionShape2D" parent="MonitoringArea"]
+shape = SubResource("CircleShape2D_u68ve")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.811765, 0, 0.137255, 1)
+debug_path_custom_line_width = 2.0
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="body_entered" from="MonitoringArea" to="." method="_on_monitoring_area_body_entered"]
+[connection signal="body_exited" from="MonitoringArea" to="." method="_on_monitoring_area_body_exited"]

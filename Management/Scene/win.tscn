@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://xvw84svcw23h"]
+
+[ext_resource type="Texture2D" uid="uid://c7ysy2bxwlout" path="res://Management/Texture/Backgroun.png" id="1_f5qcy"]
+[ext_resource type="Script" path="res://Management/Scripts/win.gd" id="1_iuhmn"]
+[ext_resource type="FontFile" uid="uid://cryeefx34b5cl" path="res://Management/Fonts/Creepster-Regular.ttf" id="2_6vbun"]
+[ext_resource type="Texture2D" uid="uid://dmuh2uclrnk2m" path="res://Management/Texture/Button.png" id="3_4nga4"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iuhmn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_f5qcy")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 416.0
+offset_right = 958.0
+offset_bottom = 616.0
+texture_normal = ExtResource("3_4nga4")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 29.0
+offset_right = 590.0
+offset_bottom = 150.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_6vbun")
+theme_override_font_sizes/font_size = 100
+text = "Winner"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

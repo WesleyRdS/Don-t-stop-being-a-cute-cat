@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://clcgnijseym46"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_2fn37"]
+[ext_resource type="Texture2D" uid="uid://c6qu1p574l6r3" path="res://Items/Texture/Balde.png" id="2_j7nf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmcl7"]
+size = Vector2(90, 107)
+
+[node name="Bucket" instance=ExtResource("1_2fn37")]
+collectable_data = [1, "res://Items/Texture/Balde.png", null, null, "collectable", "Bucket"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_j7nf7")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-4, 8.5)
+shape = SubResource("RectangleShape2D_cmcl7")

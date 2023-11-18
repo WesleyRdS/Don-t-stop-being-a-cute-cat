@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk3nmay0hxavr"]
+
+[ext_resource type="PackedScene" uid="uid://dn501fyhls61" path="res://Items/Scene/collectibles.tscn" id="1_cth78"]
+[ext_resource type="Texture2D" uid="uid://dxnvb01nqrbx7" path="res://Items/Texture/Caixa.png" id="2_puduv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17r6t"]
+size = Vector2(140, 83)
+
+[node name="Box" instance=ExtResource("1_cth78")]
+collectable_data = [1, "res://Items/Texture/Caixa.png", null, null, "collectable", "Box"]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_puduv")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_17r6t")
